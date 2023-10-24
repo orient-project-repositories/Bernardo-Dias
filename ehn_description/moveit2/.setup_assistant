@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: ehn_description
+    relative_path: urdf/ehn.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/ehn.srdf
+  CONFIG:
+    author_name: b
+    author_email: bernardo.colacodias@gmail.com
+    generated_timestamp: 1630336185

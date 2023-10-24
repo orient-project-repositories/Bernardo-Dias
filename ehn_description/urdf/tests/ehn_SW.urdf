@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="ehn">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0084505 0.21233 0.0044923"
+        rpy="0 0 0" />
+      <mass
+        value="4.883" />
+      <inertia
+        ixx="0.068826"
+        ixy="0.0023855"
+        ixz="6.5015E-05"
+        iyy="0.020466"
+        iyz="-0.0012214"
+        izz="0.070024" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="neck_link1">
+    <inertial>
+      <origin
+        xyz="-0.0084505 0.21233 0.0044923"
+        rpy="0 0 0" />
+      <mass
+        value="4.883" />
+      <inertia
+        ixx="0.068826"
+        ixy="0.0023855"
+        ixz="6.5015E-05"
+        iyy="0.020466"
+        iyz="-0.0012214"
+        izz="0.070024" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/neck_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/neck_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="neck_joint1"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="neck_link1" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.52"
+      upper="0.52"
+      effort="10"
+      velocity="10" />
+    <dynamics
+      damping="100"
+      friction="100" />
+  </joint>
+  <link
+    name="neck_link2">
+    <inertial>
+      <origin
+        xyz="-0.0084505 0.21233 0.0044923"
+        rpy="0 0 0" />
+      <mass
+        value="4.883" />
+      <inertia
+        ixx="0.068826"
+        ixy="0.0023855"
+        ixz="6.5015E-05"
+        iyy="0.020466"
+        iyz="-0.0012214"
+        izz="0.070024" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/neck_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/neck_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="neck_joint2"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="neck_link1" />
+    <child
+      link="neck_link2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="15"
+      velocity="10" />
+    <dynamics
+      damping="100"
+      friction="100" />
+  </joint>
+  <link
+    name="neck_link3">
+    <inertial>
+      <origin
+        xyz="-0.0084505 0.21233 0.0044923"
+        rpy="0 0 0" />
+      <mass
+        value="4.883" />
+      <inertia
+        ixx="0.068826"
+        ixy="0.0023855"
+        ixz="6.5015E-05"
+        iyy="0.020466"
+        iyz="-0.0012214"
+        izz="0.070024" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/neck_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/neck_link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="neck_joint3"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="neck_link2" />
+    <child
+      link="neck_link3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.52"
+      upper="0.52"
+      effort="10"
+      velocity="10" />
+    <dynamics
+      damping="100"
+      friction="100" />
+  </joint>
+  <link
+    name="head_link">
+    <inertial>
+      <origin
+        xyz="-0.0084505 0.21233 0.0044923"
+        rpy="0 0 0" />
+      <mass
+        value="4.883" />
+      <inertia
+        ixx="0.068826"
+        ixy="0.0023855"
+        ixz="6.5015E-05"
+        iyy="0.020466"
+        iyz="-0.0012214"
+        izz="0.070024" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/head_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/head_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="head_joint"
+    type="revolute">
+    <origin
+      xyz="5.5962E-05 0.2146 0.0049563"
+      rpy="0 0 0" />
+    <parent
+      link="neck_link3" />
+    <child
+      link="head_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.52"
+      upper="0.52"
+      effort="10"
+      velocity="1" />
+    <dynamics
+      damping="100"
+      friction="100" />
+  </joint>
+  <link
+    name="eye_link1">
+    <inertial>
+      <origin
+        xyz="-0.0084505 0.21233 0.0044923"
+        rpy="0 0 0" />
+      <mass
+        value="4.883" />
+      <inertia
+        ixx="0.068826"
+        ixy="0.0023855"
+        ixz="6.5015E-05"
+        iyy="0.020466"
+        iyz="-0.0012214"
+        izz="0.070024" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/eye_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/eye_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="eye_joint1"
+    type="revolute">
+    <origin
+      xyz="-0.016165 0.057774 0.00091686"
+      rpy="0 0 0" />
+    <parent
+      link="head_link" />
+    <child
+      link="eye_link1" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.78"
+      upper="0.78"
+      effort="10"
+      velocity="10" />
+    <dynamics
+      damping="100"
+      friction="100" />
+  </joint>
+  <link
+    name="eye_link2">
+    <inertial>
+      <origin
+        xyz="-0.0084505 0.21233 0.0044923"
+        rpy="0 0 0" />
+      <mass
+        value="4.883" />
+      <inertia
+        ixx="0.068826"
+        ixy="0.0023855"
+        ixz="6.5015E-05"
+        iyy="0.020466"
+        iyz="-0.0012214"
+        izz="0.070024" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/eye_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/eye_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="eye_joint2"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="eye_link1" />
+    <child
+      link="eye_link2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.04"
+      upper="1.04"
+      effort="10"
+      velocity="10" />
+    <dynamics
+      damping="100"
+      friction="100" />
+  </joint>
+  <link
+    name="eye_link3">
+    <inertial>
+      <origin
+        xyz="-0.0084505 0.21233 0.0044923"
+        rpy="0 0 0" />
+      <mass
+        value="4.883" />
+      <inertia
+        ixx="0.068826"
+        ixy="0.0023855"
+        ixz="6.5015E-05"
+        iyy="0.020466"
+        iyz="-0.0012214"
+        izz="0.070024" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/eye_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn/meshes/eye_link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="eye_joint3"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="eye_link2" />
+    <child
+      link="eye_link3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.2"
+      upper="0.2"
+      effort="10"
+      velocity="10" />
+    <dynamics
+      damping="100"
+      friction="100" />
+  </joint>
+</robot>

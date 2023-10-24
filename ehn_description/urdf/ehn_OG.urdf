@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="ehn">
+    <!--ros_control plugin-->
+  <gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>ehn</robotNamespace>
+  </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="gazebo_ros_force" filename="libgazebo_ros_force.so">
+      <alwaysOn>true</alwaysOn>
+      <update>100</update>
+      <updateRate>100.0</updateRate>
+      <bodyName>head_link</bodyName>
+      <topicName>force/head_force</topicName>
+    </plugin>
+  </gazebo>
+ <gazebo reference="head_joint">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+  <gazebo>
+    <plugin name="ft_sensor_plugin" filename="libgazebo_ros_ft_sensor.so">
+      <updateRate>1</updateRate>
+      <topicName>ft_sensor/head_joint</topicName>
+      <gaussianNoise>0.0</gaussianNoise>
+      <jointName>head_joint</jointName>
+      <frame>head_link</frame>
+    </plugin>
+  </gazebo>
+ <gazebo reference="neck_joint1">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+  <gazebo>
+    <plugin name="ft_sensor_plugin" filename="libgazebo_ros_ft_sensor.so">
+      <updateRate>1</updateRate>
+      <topicName>ft_sensor/neck_joint1</topicName>
+      <gaussianNoise>0.0</gaussianNoise>
+      <jointName>neck_joint1</jointName>
+      <frame>neck_link</frame>
+    </plugin>
+  </gazebo>
+   <gazebo reference="neck_joint2">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+  <gazebo>
+    <plugin name="ft_sensor_plugin" filename="libgazebo_ros_ft_sensor.so">
+      <updateRate>1</updateRate>
+      <topicName>ft_sensor/neck_joint2</topicName>
+      <gaussianNoise>0.0</gaussianNoise>
+      <jointName>neck_joint2</jointName>
+      <frame>neck_link</frame>
+    </plugin>
+  </gazebo>
+   <gazebo reference="neck_joint3">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+  <gazebo>
+    <plugin name="ft_sensor_plugin" filename="libgazebo_ros_ft_sensor.so">
+      <updateRate>1</updateRate>
+      <topicName>ft_sensor/neck_joint3</topicName>
+      <gaussianNoise>0.0</gaussianNoise>
+      <jointName>neck_joint3</jointName>
+      <frame>neck_link</frame>
+    </plugin>
+  </gazebo>
+  <plugin name="JointStatePublisher" filename="libJointStatePublisher.so">
+    <joints>head_joint, neck_joint1, neck_joint2, neck_joint3</joints>
+    <publish_selected_only>1</publish_selected_only>
+</plugin>
+<!-- * * * BASE LINK * * * -->
+ <link name="world"/> 
+
+  <link name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"  rpy="0 0 0" />
+      <mass value="5" />
+      <inertia
+        ixx="0.67109" ixy="0.5715" ixz="-0.036069" iyy="0.21011" iyz="-0.16464" izz="0.70362" />
+    </inertial>
+   <visual>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn_description/meshes/torso.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+       <material
+        name="">
+        <color rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+     
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"  rpy="0 0 0" />
+      <geometry>
+       <mesh
+          filename="package://ehn_description/meshes/torso.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="base_link">
+        <kp>1000000.0</kp>
+        <kd>1000000.0</kd>
+        <mu1>1000000.0</mu1>
+        <mu2>1000000.0</mu2>
+        <material>Gazebo/Green</material>
+    </gazebo>
+    <joint
+    name="dummy_joint" type="fixed">
+    <origin
+      xyz="0 0 0" rpy="0 0 0" />
+    <parent link="world" />
+    <child link="base_link" />
+  </joint> 
+    
+    <!-- * * * NECK LINK * * * -->
+  <link
+    name="neck_link">
+    <inertial>
+      <origin
+        xyz="0.000203483745243849 0.129685703832282 0.00262447328347798" rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0.0120649057014717"
+        ixy="1.81679347155662E-05"
+        ixz="-1.50058183101914E-06"
+        iyy="0.00164994565864921"
+        iyz="-0.000288088632794543"
+        izz="0.0121043532907629" />
+    </inertial>
+     <visual>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+         
+      <geometry>
+       <mesh
+          filename="package://ehn_description/meshes/neck.STL" scale="0.001 0.001 0.001" />
+      </geometry>
+     <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material> 
+      
+    </visual>
+   <collision>
+      <origin
+        xyz="0 0 0"  rpy="0 0 0" />
+      <geometry>
+       <mesh
+          filename="package://ehn_description/meshes/neck.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    
+  </link>
+  <gazebo reference="neck_link">
+        <kp>1000000.0</kp>
+        <kd>1.0</kd>
+        <mu1>20.0</mu1>
+        <mu2>10.0</mu2>
+        <material>Gazebo/Green</material>
+    </gazebo>
+    <!-- * * * Neck Joint* * * -->
+    <!--<joint
+    name="neck_joint" type="fixed">
+    <origin
+      xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="neck_link1" />
+  </joint>  -->
+  
+  <link name="neck_link1" >
+    <inertial>
+      <mass value="0.01" />
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+    </inertial>
+  </link>
+  <joint
+    name="neck_joint1" type="revolute">
+    <origin
+      xyz="0 0 0" rpy="1.57 0 -3.14" />
+    <parent link="base_link" />
+    <child link="neck_link1" />
+    <limit lower="-3" upper="3" effort="1000.0" velocity="100.0"/> <!-- -0.57/+0.57 -->
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link name="neck_link2" >
+    <inertial>
+      <mass value="0.01" />
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+    </inertial>
+  </link>
+  <joint
+    name="neck_joint2" type="revolute">
+    <origin
+      xyz="0 0 0" rpy="0 0 0" />
+    <parent link="neck_link1" />
+    <child link="neck_link2" />
+    <limit lower="-3" upper="3" effort="1000.0" velocity="100.0"/> <!-- -0.8/+0.8 -->
+    <axis
+      xyz="0 1 0" />
+  </joint>
+<link name="neck_link3" >
+    <inertial>
+      <mass value="0.01" />
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+    </inertial>
+  </link>
+  
+  <joint
+    name="neck_joint3" type="revolute">
+    <origin
+      xyz="0 0 0" rpy="0 0 0" />
+    <parent link="neck_link2" />
+    <child link="neck_link3" />
+    <limit lower="-3" upper="3" effort="1000.0" velocity="100.0"/> <!-- -0.4/+0.4 -->
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <joint
+    name="neck_joint" type="fixed">
+    <origin
+      xyz="0 0 0" rpy="0 0 0" />
+    <parent link="neck_link3" />
+    <child link="neck_link" />
+  </joint>
+  
+        <!--Connection between joint and actuator-->
+  <transmission name="tran1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="neck_joint1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor1">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction> <!--OPTIONAL-->
+        </actuator>
+    </transmission>
+    <transmission name="tran2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="neck_joint2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor2">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="neck_joint3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor3">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- * * * Link Head* * * -->
+  <link
+    name="head_link">
+    <inertial>
+      <origin
+        xyz="-0.0116041712056188 0.272728950455507 0.00591895153717838" rpy="0 0 0" />
+      <mass
+        value="2" />
+      <inertia
+        ixx="0.0205178602272685"
+        ixy="-0.000160876227725919"
+        ixz="8.2602748865904E-06"
+        iyy="0.0190414278028778"
+        iyz="5.45328192891528E-07"
+        izz="0.0189138325061749" />
+    </inertial>
+   <visual>
+      <origin
+        xyz="0.01 -0.19 0" rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn_description/meshes/head.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material> 
+    </visual>
+    <collision>
+      <origin
+        xyz="0.01 -0.19 0" rpy="0 0 0" />
+      <geometry>
+       <mesh
+          filename="package://ehn_description/meshes/head.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision> 
+    
+  </link>
+  <gazebo reference="head_link">
+        <kp>1000000.0</kp>
+        <kd>1.0</kd>
+        <mu1>20.0</mu1>
+        <mu2>10.0</mu2>
+        <material>Gazebo/Green</material>
+    </gazebo>
+    <!-- * * * Head Joint* * * -->
+  <joint
+    name="head_joint" type="revolute">
+    <origin
+      xyz="0 0.2 0" rpy="0 0 0" /><!--0.028348 0.21166 0.015774-->
+    <parent
+      link="neck_link" />
+    <child
+      link="head_link" />
+    <limit lower="-1" upper="1" effort="1000.0" velocity="100.0"/>
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <transmission name="tran4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="head_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor4">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- * * * Link Eye* * * -->
+  <link
+    name="eye_link">
+    <inertial>
+      <origin
+        xyz="-1.02050279798833E-18 0 0" rpy="0 0 0" />
+      <mass
+        value="0.3" />
+      <inertia
+        ixx="0.000290508591446567"
+        ixy="0"
+        ixz="0"
+        iyy="0.000290508591446567"
+        iyz="0"
+        izz="0.000290508591446567" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.09 -0.27 -0.0027" rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ehn_description/meshes/eye.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.09 -0.27 -0.0027" rpy="0 0 0" />
+      <geometry>
+      
+        <mesh
+          filename="package://ehn_description/meshes/eye.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+   <gazebo reference="eye_link">
+        <kp>1000000.0</kp>
+        <kd>1000000.0</kd>
+        <mu1>10.0</mu1>
+        <mu2>10.0</mu2>
+        <material>Gazebo/Blue</material>
+    </gazebo>
+    <!-- * * * Eye joint* * * -->
+    <!--<joint
+    name="eye_joint" type="fixed">
+    <origin
+      xyz="0.0032992 0.058741 -0.011773" rpy="0 0 0" />
+    <parent link="head_link" />
+    <child link="eye_link1" />
+  </joint> -->
+  
+  <link name="eye_link1" >
+    <inertial>
+      <mass value="0.001" />
+      <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4" />
+    </inertial>
+  </link>
+  <joint
+    name="eye_joint1" type="revolute">
+    <origin
+      xyz="-0.11 0.08 0" rpy="0 0 0" /><!--0.0032992 0.058741 -0.011773-->
+    <parent link="head_link" />
+    <child link="eye_link1" />
+    <limit lower="-1.57" upper="1.57" effort="1000.0" velocity="100.0"/>
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link name="eye_link2" >
+    <inertial>
+      <mass value="0.001" />
+      <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4" />
+    </inertial>
+  </link>
+  <joint
+    name="eye_joint2" type="revolute">
+    <origin
+      xyz="0 0 0" rpy="0 0 0" />
+    <parent link="eye_link1" />
+    <child link="eye_link2" />
+    <limit lower="-0.2" upper="0.2" effort="1000.0" velocity="100.0"/>
+    <axis
+      xyz="0 1 0" />
+  </joint>
+<link name="eye_link3" >
+    <inertial>
+      <mass value="0.001" />
+      <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4" />
+    </inertial>
+  </link>
+  
+  <joint
+    name="eye_joint3" type="revolute">
+    <origin
+      xyz="0 0 0" rpy="0 0 0" />
+    <parent link="eye_link2" />
+    <child link="eye_link3" />
+    <limit lower="-0.2" upper="0.2" effort="1000.0" velocity="100.0"/>
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <joint
+    name="eye_joint" type="fixed">
+    <origin
+      xyz="0 0 0" rpy="0 0 0" />
+    <parent link="eye_link3" />
+    <child link="eye_link" />
+  </joint>
+  
+  <transmission name="tran5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="eye_joint1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor5">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="eye_joint2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor6">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran7">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="eye_joint3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor7">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <disable_collisions link1="base_link" link2="eye_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="neck_link" reason="Adjacent" />
+    <disable_collisions link1="eye_link" link2="head_link" reason="Adjacent" />
+    <disable_collisions link1="eye_link" link2="neck_link" reason="Never" />
+    <disable_collisions link1="head_link" link2="neck_link" reason="Adjacent" />
+</robot>

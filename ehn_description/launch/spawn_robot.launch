@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<launch>
+    <arg name="urdf_robot_file" default="" />
+    <param name="robot_description" command="cat $(arg urdf_robot_file)" />
+
+    <group ns="ehn">
+        <!-- Spawn Part -->
+        <arg name="x" default="0.0" />
+        <arg name="y" default="0.0" />
+        <arg name="z" default="0.0" />
+        <arg name="roll" default="0" /> <!-- 1.57 -->
+        <arg name="pitch" default="0.0" />
+        <arg name="yaw" default="0" /> <!-- 1.57/-3.14 -->
+
+
+        <!-- -J neck_joint1 -1.57
+              -J neck_joint2 -1.7 -J neck_joint3 1.7072-->
+        
+        <arg name="robot_name" default="ehn" />
+        
+        
+        <rosparam file="$(find ehn_description)/config/ehn_control.yaml" command="load" ns="/ehn"/>
+        
+        <param name="/ehn/robot_description" command="cat $(arg urdf_robot_file)" />
+        
+        
+        <node name="urdf_spawner_ehn" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) -model $(arg robot_name) -param /ehn/robot_description"/>
+        
+        <node name="robot_state_publisher_ehn" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">
+            <!--<remap from="/joint_states" to="/ehn/joint_states"/>-->
+            <param name="publish_frequency" type="double" value="5.0" />
+        </node>
+
+        <node name="ehn_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" args="--namespace=/ehn 
+                              /ehn/joint_state_controller 
+                              /ehn/neck_joint1_effort_controller
+                              /ehn/neck_joint2_effort_controller
+                              /ehn/neck_joint3_effort_controller
+                              /ehn/head_joint_effort_controller
+                              /ehn/eye_joint1_effort_controller
+                              /ehn/eye_joint2_effort_controller
+                              /ehn/eye_joint3_effort_controller
+                              --shutdown-timeout 3">
+        </node>
+           
+        
+    </group>
+
+</launch>

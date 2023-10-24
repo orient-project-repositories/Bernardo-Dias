@@ -1,0 +1,24 @@
+controller_list:
+  - name: fake_base_controller
+    type: $(arg execution_type)
+    joints:
+      []
+  - name: fake_neck_controller
+    type: $(arg execution_type)
+    joints:
+      - neck_joint1
+      - neck_joint2
+      - neck_joint3
+  - name: fake_head_controller
+    type: $(arg execution_type)
+    joints:
+      - head_joint
+  - name: fake_eye_controller
+    type: $(arg execution_type)
+    joints:
+      - eye_joint1
+      - eye_joint2
+      - eye_joint3
+initial:  # Define initial robot poses.
+  - group: neck
+    pose: initial_orientation

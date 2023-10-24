@@ -1,0 +1,35 @@
+digraph G {
+node [shape=box];
+"world" [label="world"];
+"base_link" [label="base_link"];
+"neck_link1" [label="neck_link1"];
+"neck_link2" [label="neck_link2"];
+"neck_link3" [label="neck_link3"];
+"neck_link" [label="neck_link"];
+"head_link" [label="head_link"];
+"eye_link1" [label="eye_link1"];
+"eye_link2" [label="eye_link2"];
+"eye_link3" [label="eye_link3"];
+"eye_link" [label="eye_link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"world" -> "dummy_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"dummy_joint" -> "base_link"
+"base_link" -> "neck_joint1" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"neck_joint1" -> "neck_link1"
+"neck_link1" -> "neck_joint2" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"neck_joint2" -> "neck_link2"
+"neck_link2" -> "neck_joint3" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"neck_joint3" -> "neck_link3"
+"neck_link3" -> "neck_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"neck_joint" -> "neck_link"
+"neck_link" -> "head_joint" [label="xyz: -0.028348 0.21166 0.015774 \nrpy: 0 -0 0"]
+"head_joint" -> "head_link"
+"head_link" -> "eye_joint1" [label="xyz: 0.0032992 0.058741 -0.011773 \nrpy: 0 -0 0"]
+"eye_joint1" -> "eye_link1"
+"eye_link1" -> "eye_joint2" [label="xyz: 0.0032992 0.058741 -0.011773 \nrpy: 0 -0 0"]
+"eye_joint2" -> "eye_link2"
+"eye_link2" -> "eye_joint3" [label="xyz: 0.0032992 0.058741 -0.011773 \nrpy: 0 -0 0"]
+"eye_joint3" -> "eye_link3"
+"eye_link3" -> "eye_joint" [label="xyz: 0.0032992 0.058741 -0.011773 \nrpy: 0 -0 0"]
+"eye_joint" -> "eye_link"
+}
