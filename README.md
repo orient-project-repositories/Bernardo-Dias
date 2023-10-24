@@ -23,16 +23,18 @@ simulator_post_thesis:
 	- Control algorithm is in optimal_control_with_u_acc.m
 	- Simulator itself is in script_eye_head.m
 	- Forces and torques are computed in compute_eye_torques2.m
--------------------------------------------------------------------------------------------------------------
-FP_5 muscles
+
+
+FP_5 muscles:
 	- Head neck model 5 insertion points optimization. Since we have 10 muscles, the other 5 are symmetric
 	- Run get_insertion_points.m for the full optimization
 	- Design.m shows a simplified figure of the muscle setup
 	- setup_simscape.m makes a simscape object from the head neck model
 	- there is a figure called "muscle_theoretical_setup.png" where you can see which cables correspond to each tendons
 	- A more detailed analysis of this folder can be found in "DFA_report" 
--------------------------------------------------------------------------------------------------------------
-ehn_description 
+
+
+ehn_description:
 	- In a folder called "SolidWorks 2020" the SolidWorks files for the assembly of the model are present (full_model1.SLDASM)
 		-> If you desire to change the meshes use sw_urdf_exporter (http://wiki.ros.org/sw_urdf_exporter) or a similar add-in,
 		   then change them in ehn_description/urdf/ehn.urdf
@@ -50,7 +52,8 @@ ehn_description
 			-> data[34:63] - forces applied on each insertion point.
 			-> when developing the MATLAB script, use the same structure when advertising to the "static_analysis" topic
 		-> Objective: at the same time we turn gravity on, we apply the forces given by MATLAB (using FP_5 muscles folder) and check if our force/torque propagation is correct.  
--------------------------------------------------------------------------------------------------------------
+
+
 Don't forget that you can press the down arrow in "Current Folder" in MATLAB to get a Dependency Report and check
 where every single function is called, for a faster analysis of the code.
 
